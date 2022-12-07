@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}questions_page{% endblock %}
+
+{% block content %}
+<h3>{{survey.questions[2].question}}</h3>
+<form action="/answer" method="POST">
+    {% for choice in survey.questions[2].choices %}
+    <p><input type="text" name="someName" value="{{ choice }}"></p>
+    {% endfor %}
+    <button>Continue</button>
+</form>
+
+
+
+{% endblock %}
