@@ -3,18 +3,13 @@
 {% block title %}questions_page{% endblock %}
 
 {% block content %}
-<h3>{{question.question}}</h3>
+<h3>{{survey.questions[1].question}}</h3>
 <form action="/answer" method="post">
-    {% for choice in question.choices %}
-    <p><input type="radio" name="Name" value="{{ choice }}">{{choice}}</p>
+    {% for choice in survey.questions[1].question.choices %}
+    <p><input type="radio" name="Name" value="{{choice}}">{{choice}}</p>
     {% endfor %}
     <button>Continue</button>
 </form>
-
-{% for q in survey.questions%}
-<p>{{survey.questions[q].question}}</p>
-{%endfor %}
-len(lis)
 
 
 
