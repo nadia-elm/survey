@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "oh-so-secret"
 
 debug = DebugToolbarExtension(app)
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 response = []
 
 
@@ -28,6 +29,19 @@ def show_questions():
     # response.append(res)
     # print(response)
     return render_template('questions.html',survey= survey)
+
+
+@app.route('/questions/2',methods=['post'])
+def next_question():
+    answer = request.form['Name']
+    response.append(answer)
+    print(response)
+    return redirect('/questions/2')
+
+
+@app.route('/questions/2')
+def question2():
+    return render_template('surveyCompletion.html')
 
 @app.route('/answers',methods=['POST'])
 def save_answer():
