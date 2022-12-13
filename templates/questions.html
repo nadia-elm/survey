@@ -3,9 +3,9 @@
 {% block title %}questions_page{% endblock %}
 
 {% block content %}
-<h3>{{current_question.question}}</h3>
+<h3>{{current.question}}</h3>
 <form action="/answer" method="post">
-    {% for choice in current_question.choices %}
+    {% for choice in current.choices %}
     <p><input type="radio" name="Name" value="{{choice}}">{{choice}}</p>
     {% endfor %}
     <button>Continue</button>
